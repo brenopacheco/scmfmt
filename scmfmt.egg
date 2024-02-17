@@ -1,8 +1,0 @@
-;; -*- scheme -*-
-
-((synopsis "Chicken Scheme code formattor to use from stdin/stdout")
- (category tools)
- (license "BSD")
- (author "Anes Lihovac")
- (version "0.1")
- (components (program scmfmt)))

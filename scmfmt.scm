@@ -1,7 +1,5 @@
 ;;simple pretty printer for sexp's
-(import scheme (chicken pretty-print) (chicken format))
-
-(import (chicken process-context))
+(import scheme (chicken pretty-print) (chicken process-context))
 
 (define (copy-line-comment)
   (let ((char (read-char)))

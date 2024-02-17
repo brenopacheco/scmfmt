@@ -1,3 +1,0 @@
-(repo git "git://github.com/paines/{egg-name}.git")
-(uri targz "https://github.com/paines/{egg-name}/tarball/{egg-release}")
-(release "0.1")
