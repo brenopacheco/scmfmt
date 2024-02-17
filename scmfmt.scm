@@ -1,5 +1,7 @@
 ;;simple pretty printer for sexp's
-(import scheme (chicken pretty-print))
+(import scheme (chicken pretty-print) (chicken format))
+
+(import (chicken process-context))
 
 (define (copy-line-comment)
   (let ((char (read-char)))
@@ -24,4 +26,18 @@
               (#t (pretty-print (read))))
         (scmfmt)))))
 
+(define (help) (print "Usage: scmfmt [-w width]") (exit 1))
+
+(define (set-max-width)
+  (let [(max-width 80) (args (command-line-arguments))]
+    (pretty-print-width (cond ((null? args) max-width)
+                 ((equal? (car args) "-w")
+                  (if (null? (cdr args))
+                    (help)
+                    (let ((width (string->number (car (cdr args)))))
+                      (cond ((and (number? width) (> width 0)) width)
+                            (else (help))))))
+                 (else (help))))))
+
+(set-max-width)
 (scmfmt)
